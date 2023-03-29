@@ -1,0 +1,58 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.soapserver.schrage.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SumWsImplService" targetNamespace="http://ws.soapserver.schrage.net/">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.soapserver.schrage.net/" elementFormDefault="unqualified" targetNamespace="http://ws.soapserver.schrage.net/" version="1.0">
+      <xs:element name="calculateSum" type="tns:calculateSum"/>
+      <xs:element name="calculateSumResponse" type="tns:calculateSumResponse"/>
+      <xs:complexType name="calculateSum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:sumRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sumRequest">
+        <xs:sequence>
+          <xs:element name="num1" type="xs:int"/>
+          <xs:element name="num2" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="calculateSumResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:sumResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sumResponse">
+        <xs:sequence>
+          <xs:element name="sum" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="calculateSumResponse">
+    <wsdl:part element="tns:calculateSumResponse" name="parameters"> </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateSum">
+    <wsdl:part element="tns:calculateSum" name="parameters"> </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SumWs">
+    <wsdl:operation name="calculateSum">
+      <wsdl:input message="tns:calculateSum" name="calculateSum"> </wsdl:input>
+      <wsdl:output message="tns:calculateSumResponse" name="calculateSumResponse"> </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SumWsImplServiceSoapBinding" type="tns:SumWs">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="calculateSum">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="calculateSum">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="calculateSumResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SumWsImplService">
+    <wsdl:port binding="tns:SumWsImplServiceSoapBinding" name="SumWsImplPort">
+      <soap:address location="http://localhost:8080/sum/sumservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
