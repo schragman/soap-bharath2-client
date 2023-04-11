@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.0.5</version>
+    <version>3.0.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>net.schrage</groupId>
@@ -16,6 +16,7 @@
   <properties>
     <java.version>17</java.version>
     <cxf.version>4.0.0</cxf.version>
+    <wss4j.version>3.0.0</wss4j.version>
   </properties>
   <dependencies>
     <dependency>
@@ -39,6 +40,18 @@
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-ws-security</artifactId>
       <version>${cxf.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-ws-security-common</artifactId>
+      <version>${wss4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-ws-security-dom</artifactId>
+      <version>${wss4j.version}</version>
     </dependency>
 
   </dependencies>
