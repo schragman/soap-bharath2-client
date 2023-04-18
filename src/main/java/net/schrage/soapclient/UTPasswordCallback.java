@@ -16,20 +16,21 @@ public class UTPasswordCallback implements CallbackHandler {
 
   public UTPasswordCallback() {
     serverStoredCredentials.put("Michael", "geheim");
-    serverStoredCredentials.put("myclientkey", "ckpass");
+    //serverStoredCredentials.put("myclientkey", "cspass");
+    serverStoredCredentials.put("myservicekey", "cspass");
   }
   @Override
   public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
-    /*Arrays.stream(callbacks)
+    Arrays.stream(callbacks)
         .map(callback -> (WSPasswordCallback) callback)
         .filter(transmittedCredential -> serverStoredCredentials.containsKey(transmittedCredential.getIdentifier()))
         .forEach(transmittedCredential -> transmittedCredential.setPassword(serverStoredCredentials.get(transmittedCredential.getIdentifier())));
-  }*/
+  }
 
-    WSPasswordCallback pc = (WSPasswordCallback) callbacks[0];
+    /*WSPasswordCallback pc = (WSPasswordCallback) callbacks[0];
     if (pc.getIdentifier().equals("myclientkey")) {
       pc.setPassword("cspass");
     }
-  }
+  }*/
 
 }
